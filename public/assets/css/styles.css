@@ -1,0 +1,26 @@
+/* #203C64 */
+.sidebar,
+.brand-link {
+    background-color: #203C64 !important;
+}
+
+.main-header {
+    background-color: #ffffff;
+}
+
+.card-header {
+    /* background-color: #cedbee; */
+    background-color: #34495ef0;
+
+    /* background-color: #d7e5f8; */
+}
+
+.card-body {
+    /* background-color: #aac0df; */
+    background-color: #e4eaf1;
+    //border: #34495ef0 1px solid;
+}
+
+h3.card-title {
+    color: #FFFFFF;
+}

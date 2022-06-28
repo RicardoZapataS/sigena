@@ -41,6 +41,7 @@
                         @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'area.index', 'icon'=> 'fas fa-th-list', 'name'=> 'Areas'])
                         @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'route_module.index', 'icon'=> 'fas fa-puzzle-piece', 'name'=> 'Rutas'])
                         @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'user.index', 'icon'=> 'fas fa-user', 'name'=> 'Usuarios'])
+                        @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'has_route.index', 'icon'=> 'fas fa-user', 'name'=> 'Permisos'])
                     @endif
                 </ul>
             </nav>

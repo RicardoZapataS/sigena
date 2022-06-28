@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Telecom;
 
 use App\Http\Controllers\Controller;
-use App\Models\HasRoute;
+use App\Models\Inventory;
 use Illuminate\Http\Request;
 
-class HasRouteController extends Controller
+class InventoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class HasRouteController extends Controller
      */
     public function index()
     {
-        $datas = HasRoute::all();
-        return view('admin.has_route.index', compact('datas'));
+        $datas = Inventory::all();
+        return  view('telecom.inventory.index', compact('datas'));
     }
 
     /**
@@ -26,7 +26,7 @@ class HasRouteController extends Controller
      */
     public function create()
     {
-        return view('admin.has_route.create');
+        return  view('telecom.inventory.create');
     }
 
     /**
@@ -37,17 +37,17 @@ class HasRouteController extends Controller
      */
     public function store(Request $request)
     {
-        HasRoute::create($request->all());
-        return redirect(route('has_route.index'));
+        Inventory::create($request->all());
+        return  redirect(route('inventory.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HasRoute  $hasRoute
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(HasRoute $hasRoute)
+    public function show(Inventory $inventory)
     {
         //
     }
@@ -55,10 +55,10 @@ class HasRouteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HasRoute  $hasRoute
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function edit(HasRoute $hasRoute)
+    public function edit(Inventory $inventory)
     {
         //
     }
@@ -67,10 +67,10 @@ class HasRouteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HasRoute  $hasRoute
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HasRoute $hasRoute)
+    public function update(Request $request, Inventory $inventory)
     {
         //
     }
@@ -78,10 +78,10 @@ class HasRouteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HasRoute  $hasRoute
+     * @param  \App\Inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HasRoute $hasRoute)
+    public function destroy(Inventory $inventory)
     {
         //
     }

@@ -64,6 +64,24 @@ Route::middleware('auth')->group(function () {
         Route::get('/usuario/{user}', 'Admin\UserController@show')->name('show');
         Route::delete('/usuario/{user}', 'Admin\UserController@destroy')->name('delete');
     });
+    Route::name('inventory.')->group(function () {
+        Route::get('/inventario', 'Telecom\InventoryController@index')->name('index');
+        Route::get('/inventario/crear', 'Telecom\InventoryController@create')->name('create');
+        Route::post('/inventario/store', 'Telecom\InventoryController@store')->name('store');
+        Route::get('/inventario/{inventory}/editar', 'Telecom\InventoryController@edit')->name('edit');
+        Route::put('/inventario/{inventory}/update', 'Telecom\InventoryController@update')->name('update');
+        Route::get('/inventario/{inventory}', 'Telecom\InventoryController@show')->name('show');
+        Route::delete('/inventario/{inventory}', 'Telecom\InventoryController@destroy')->name('delete');
+    });
+    Route::name('has_route.')->group(function () {
+        Route::get('/permisos', 'Admin\HasRouteController@index')->name('index');
+        Route::get('/permisos/crear', 'Admin\HasRouteController@create')->name('create');
+        Route::post('/permisos/store', 'Admin\HasRouteController@store')->name('store');
+        Route::get('/permisos/{has_route}/editar', 'Admin\HasRouteController@edit')->name('edit');
+        Route::put('/permisos/{has_route}/update', 'Admin\HasRouteController@update')->name('update');
+        Route::get('/permisos/{has_route}', 'Admin\HasRouteController@show')->name('show');
+        Route::delete('/permisos/{has_route}', 'Admin\HasRouteController@destroy')->name('delete');
+    });
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

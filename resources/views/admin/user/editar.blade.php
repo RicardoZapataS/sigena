@@ -2,16 +2,17 @@
 
 @section('content')
     <div class="card-body">
-        <form action="{{ route('user.store') }}" method="post" class="row">
+        <form action="{{ route('user.update', $data->id) }}" method="post" class="row">
             @csrf
+            @method('PUT')
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="date_event">Nombre <small>*Obligatorio</small> </label>
-                    <input required id="name" name="name" class="form-control" type="text">
+                    <input value="{{ $data-> }}" required id="name" name="name" class="form-control" type="text">
                 </div>
                 <div class="form-group">
                     <label for="date_event">Apellidos <small>*Obligatorio</small> </label>
-                    <input required id="last_name" name="last_name" class="form-control" type="text">
+                    <input  value="{{ $data-> }}" required id="last_name" name="last_name" class="form-control" type="text">
                 </div>
                 <div class="form-group">
                     <label for="team">Area </label>
@@ -26,7 +27,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="date_event">Correo<small>*Obligatorio</small> </label>
-                    <input required id="email" name="email" class="form-control" type="email">
+                    <input required value="{{ $data-> }}"  id="email" name="email" class="form-control" type="email">
                 </div>
                 <div class="form-group">
                     <label for="team">Administrador </label>

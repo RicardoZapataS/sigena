@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
@@ -13,5 +14,9 @@ class Area extends Model
 
     public function hasRoute(){
         return $this->morphMany(HasRoute::class, 'model');
+    }
+
+    public  function user(){
+        return $this->belongsTo(User::class);
     }
 }

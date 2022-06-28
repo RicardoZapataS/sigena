@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\RouteModule;
+use App\Http\Controllers\Controller;
+use App\Models\Area;
+use App\User;
 use Illuminate\Http\Request;
 
-class RouteModuleController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class RouteModuleController extends Controller
      */
     public function index()
     {
-        //
+        $datas = User::all();
+        return view('admin.user.index', compact('datas'));
     }
 
     /**
@@ -24,7 +27,8 @@ class RouteModuleController extends Controller
      */
     public function create()
     {
-        //
+        $areas = Area::all();
+        return view('admin.user.create', compact('areas'));
     }
 
     /**
@@ -35,16 +39,16 @@ class RouteModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\RouteModule  $routeModule
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(RouteModule $routeModule)
+    public function show(User $user)
     {
         //
     }
@@ -52,10 +56,10 @@ class RouteModuleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\RouteModule  $routeModule
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(RouteModule $routeModule)
+    public function edit(User $user)
     {
         //
     }
@@ -64,10 +68,10 @@ class RouteModuleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RouteModule  $routeModule
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RouteModule $routeModule)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -75,10 +79,10 @@ class RouteModuleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\RouteModule  $routeModule
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RouteModule $routeModule)
+    public function destroy(User $user)
     {
         //
     }

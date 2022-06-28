@@ -35,6 +35,13 @@
                             @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> $hasRoute->route_module->route_name, 'icon'=>$hasRoute->route_module->icon, 'name'=>$hasRoute->route_module->name])
                         @endforeach
                     @endif
+
+                    @if(Auth::user()->super_user)
+                        <li class="nav-header">Administrador</li>
+                        @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'area.index', 'icon'=> 'fas fa-th-list', 'name'=> 'Areas'])
+                        @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'route_module.index', 'icon'=> 'fas fa-puzzle-piece', 'name'=> 'Rutas'])
+                        @include('layouts.components.sidebar.sidebar_menu_item', [ 'route'=> 'user.index', 'icon'=> 'fas fa-user', 'name'=> 'Usuarios'])
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

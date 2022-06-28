@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Area;
+use App\Models\Area;
+use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class AreasController extends Controller
@@ -14,7 +16,8 @@ class AreasController extends Controller
      */
     public function index()
     {
-        //
+        $datas = Area::all();
+        return  view('admin.area.index', compact('datas'));
     }
 
     /**
@@ -24,7 +27,8 @@ class AreasController extends Controller
      */
     public function create()
     {
-        //
+        $users =  User::all();
+        return view('admin.area.create', compact('users'));
     }
 
     /**
@@ -35,7 +39,11 @@ class AreasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $area = new Area();
+        $area->name = $request->name;
+        $area->user_id = ($request->user_id == -1 ? null : $request->user_id);
+        $area->save();
+        return redirect(route('area.index'));
     }
 
     /**
@@ -46,7 +54,8 @@ class AreasController extends Controller
      */
     public function show(Area $areas)
     {
-        //
+        $users =  User::all();
+        return view('admin.area.show', compact('users'));
     }
 
     /**
@@ -55,9 +64,11 @@ class AreasController extends Controller
      * @param  \App\Area  $areas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Area $areas)
+    public function edit($areas)
     {
-        //
+        $data = Area::find($areas);
+        $users =  User::all();
+        return view('admin.area.edit', compact('users', 'data'));
     }
 
     /**
@@ -67,9 +78,13 @@ class AreasController extends Controller
      * @param  \App\Area  $areas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Area $areas)
+    public function update(Request $request, $areas)
     {
-        //
+        $area = Area::find($areas);
+        $area->name = $request->name;
+        $area->user_id = ($request->user_id == -1 ? null : $request->user_id);
+        $area->save();
+        return redirect(route('area.index'));
     }
 
     /**

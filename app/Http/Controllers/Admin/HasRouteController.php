@@ -37,6 +37,7 @@ class HasRouteController extends Controller
      */
     public function store(Request $request)
     {
+        dd();
         HasRoute::create($request->all());
         return redirect(route('has_route.index'));
     }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card-body">
-        <form action="{{ route('area.store') }}" method="post" class="row">
+        <form action="{{ route('inventoru.store') }}" method="post" class="row">
             @csrf
             <div class="col-md-6">
                 <div class="form-group">

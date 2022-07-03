@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Area;
 use App\Models\HasRoute;
+use App\Models\RouteModule;
+use App\User;
 use Illuminate\Http\Request;
 
 class HasRouteController extends Controller
@@ -26,7 +29,11 @@ class HasRouteController extends Controller
      */
     public function create()
     {
-        return view('admin.has_route.create');
+        $routes = RouteModule::whereNull('route_module_id')->get();
+        $areas = Area::all();
+        $users = User::all();
+        //dd($routes);
+        return view('admin.has_route.create', compact('routes', 'areas', 'users'));
     }
 
     /**
@@ -37,7 +44,6 @@ class HasRouteController extends Controller
      */
     public function store(Request $request)
     {
-        dd();
         HasRoute::create($request->all());
         return redirect(route('has_route.index'));
     }

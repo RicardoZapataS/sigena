@@ -6,8 +6,12 @@
             <thead>
             <tr>
                 <th>N°</th>
-                <th>Descripcion</th>
-                <th>Cantidad</th>
+                <th>Ticket</th>
+                <th>Equipo</th>
+                <th>Marca</th>
+                <th>Serial</th>
+                <th>Responsable</th>
+                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -15,15 +19,19 @@
             @foreach($datas as $key =>$data)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $data->description }}</td>
-                    <td>{{ $data->amount }}</td>
+                    <td> WOT-{{ $data->id . str_replace('-', '', $data->created_at) }}</td>
+                    <td>{{ $data->team }}</td>
+                    <td>{{ $data->brand }}</td>
+                    <td>{{ $data->serial }}</td>
+                    <td>{{ $data->user->name }}</td>
+                    <td>{{ $data->created_at }}</td>
                     <td style="display: flex; flex-direction: column; ;">
                         <div  style="display: flex; flex-direction: revert; gap: 0.5rem;">
-                            <a href="{{ route('inventory.show', $data->id) }}" class="btn btn-primary " style="color: white"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('work_order_telecom.show', $data->id) }}" class="btn btn-primary " style="color: white"><i class="fas fa-eye"></i></a>
                             @if(Auth::can_modify())
-                                <a href="{{ route('inventory.edit', $data->id) }}" class="btn btn-warning " style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
+                                <a href="{{ route('work_order_telecom.edit', $data->id) }}" class="btn btn-warning " style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
                                 <a onclick="event.preventDefault(); document.getElementById('delete-form-{{$data->id}}').submit();"  class="btn btn-danger " style="color: white"><i class="fas fa-trash"></i></a>
-                                <form action="{{ route('inventory.delete', $data->id) }}" id="delete-form-{{$data->id}}" method="POST" style="display: none">
+                                <form action="{{ route('work_order_telecom.delete', $data->id) }}" id="delete-form-{{$data->id}}" method="POST" style="display: none">
                                     @csrf
                                     @method('DELETE')
                                 </form>

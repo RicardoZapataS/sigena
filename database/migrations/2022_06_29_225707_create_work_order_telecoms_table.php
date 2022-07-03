@@ -24,11 +24,12 @@ class CreateWorkOrderTelecomsTable extends Migration
             $table->string('frequency');
             $table->string('origin');
             $table->string('type_job');
-            $table->string('fails');
-            $table->string('causes');
-            $table->string('revision');
-            $table->string('observation');
+            $table->text('fails');
+            $table->text('causes');
+            $table->text('revision');
+            $table->text('observation');
             $table->string('time_attention');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

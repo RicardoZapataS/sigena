@@ -13,7 +13,7 @@ Route::prefix('/telecomunicaciones')->group(function (){
         Route::get('/inventario/{inventory}', 'InventoryController@show')->name('show');
         Route::delete('/inventario/{inventory}', 'InventoryController@destroy')->name('delete');
     });
-    Route::name('work_order.')->group(function () {
+    Route::name('work_order_telecom.')->group(function () {
         Route::get('/telecomunicaciones/orden-de-trabajo', 'WorkOrderTelecomController@index')->name('index');
         Route::get('/telecomunicaciones/orden-de-trabajo/crear', 'WorkOrderTelecomController@create')->name('create');
         Route::post('/telecomunicaciones/orden-de-trabajo/store', 'WorkOrderTelecomController@store')->name('store');

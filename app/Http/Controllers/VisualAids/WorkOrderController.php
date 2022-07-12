@@ -37,7 +37,8 @@ class WorkOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = WorkOrder::create($request->all());
+        return redirect(route('work_order.index'));
     }
 
     /**
@@ -48,7 +49,9 @@ class WorkOrderController extends Controller
      */
     public function show(WorkOrder $workOrder)
     {
-        //
+
+        $data = $workOrder;
+        return  view('visual_aids.worker_order.show', compact('data'));
     }
 
     /**
@@ -59,7 +62,8 @@ class WorkOrderController extends Controller
      */
     public function edit(WorkOrder $workOrder)
     {
-        //
+        $data = $workOrder;
+        return  view('visual_aids.worker_order.edit', compact('data'));
     }
 
     /**

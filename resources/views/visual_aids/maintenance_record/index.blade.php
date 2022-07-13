@@ -8,6 +8,8 @@
                 <th>N°</th>
                 <th>Codigo</th>
                 <th>Nombre tecnico</th>
+                <th>Nombre de actividad</th>
+                <th>Identificador de actividad</th>
                 <th>Fecha</th>
                 <th>Turno</th>
                 <th>Acciones</th>
@@ -15,20 +17,21 @@
             </thead>
             <tbody>
             @foreach($datas as $key =>$data)
-                <tr>
+                <tr @if($data->alarm) class="alarm-table" @endif>
                     <td>{{ $key + 1 }}</td>
-                    <td>OT-{{ $data->id }}</td>
+                    <td>RM-{{ $data->id }}</td>
                     <td>{{ $data->user->name }}</td>
-                    <td>{{ $data->date_work }}</td>
+                    <td>{{ $data->activity_name }}</td>
+                    <td>{{ $data->activity_ident }}</td>
+                    <td>{{ $data->date_maintenance }}</td>
                     <td>{{ $data->turn }}</td>
-                    <td>{{ $data->performed_action }}</td>
                     <td style="display: flex; flex-direction: column; ;">
                         <div  style="display: flex; flex-direction: revert; gap: 0.5rem;">
-                            <a href="{{ route('work_order.show', $data->id) }}" class="btn btn-primary " style="color: white"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('maintenance_record.show', $data->id) }}" class="btn btn-primary " style="color: white"><i class="fas fa-eye"></i></a>
                             @if(Auth::can_modify())
-                                <a href="{{ route('work_order.edit', $data->id) }}" class="btn btn-warning " style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
+                                <a href="{{ route('maintenance_record.edit', $data->id) }}" class="btn btn-warning " style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
                                 <a onclick="event.preventDefault(); document.getElementById('delete-form-{{$data->id}}').submit();"  class="btn btn-danger " style="color: white"><i class="fas fa-trash"></i></a>
-                                <form action="{{ route('work_order.delete', $data->id) }}" id="delete-form-{{$data->id}}" method="POST" style="display: none">
+                                <form action="{{ route('maintenance_record.delete', $data->id) }}" id="delete-form-{{$data->id}}" method="POST" style="display: none">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -41,7 +44,6 @@
         </table>
     </div>
     <!-- /.card-body -->
-    </div>
     <!-- /.card -->
 @endsection
 <!-- DataTables -->
@@ -50,6 +52,18 @@
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @section('css')
 
+    <style>
+        .alarm-table{
+            background-color: #9d1e15;
+            color: whitesmoke;
+            border-color: #9d1e15
+        }
+        .alarm-table td{
+            background-color: #9d1e15;
+            color: whitesmoke;
+            border-color: #9d1e15
+        }
+    </style>
 
 @endsection
 

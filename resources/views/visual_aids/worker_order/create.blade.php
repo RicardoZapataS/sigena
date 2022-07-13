@@ -122,7 +122,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">OBL PC1 </span>
                         </div>
-                        <input  id="platform_lightspc1" name="platform_lightspc1" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                            <input  id="platform_lightspc1" name="platform_lightspc1" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
             </div>
@@ -139,9 +139,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">WILD 34 </span>
                         </div>
-                        <input id="whirlwind34" name="whirlwind34"  type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                            <input id="whirlwind34" name="whirlwind34"  type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="alarm_check">Alerta <small></small> </label>
+                <input required id="alarm_check" name="alarm_check" class="form-control" type="checkbox">
             </div>
             <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
             <div class="col-12">
@@ -152,4 +156,37 @@
         </form>
     </div>
     <!-- /.card-body -->
+    <button id="modalshow" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal"> </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registro de mantenimiento - Obserbaciones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-md-12">
+                        <input required id="observation" name="observation" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">cerrar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar observaciones</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+  @section('js')
+      <script >
+          $(document).ready(function() {
+
+              $('#alarm_check').change(function() {
+                  $("#modalshow").click();
+              });
+          });
+      </script>
+  @endsection

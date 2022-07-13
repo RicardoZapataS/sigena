@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\VisualAids;
 
 use App\Http\Controllers\Controller;
-use App\MaintenanceRecord;
+use App\Models\MaintenanceRecord;
 use Illuminate\Http\Request;
 
 class MaintenanceRecordController extends Controller
@@ -15,7 +15,8 @@ class MaintenanceRecordController extends Controller
      */
     public function index()
     {
-        //
+        $datas = MaintenanceRecord::all();
+        return view('visual_aids.maintenance_record.index', compact('datas'));
     }
 
     /**
@@ -25,7 +26,7 @@ class MaintenanceRecordController extends Controller
      */
     public function create()
     {
-        //
+        return view('visual_aids.maintenance_record.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class MaintenanceRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MaintenanceRecord::create(['alarm'=> !(is_null($request->alarm_check))] + $request->all());
+        return redirect(route('maintenance_record.index'));
     }
 
     /**
@@ -47,7 +49,8 @@ class MaintenanceRecordController extends Controller
      */
     public function show(MaintenanceRecord $maintenanceRecord)
     {
-        //
+        return view('visual_aids.maintenance_record.show', compact('maintenanceRecord'));
+
     }
 
     /**
@@ -58,7 +61,7 @@ class MaintenanceRecordController extends Controller
      */
     public function edit(MaintenanceRecord $maintenanceRecord)
     {
-        //
+        return view('visual_aids.maintenance_record.edit', compact('maintenanceRecord'));
     }
 
     /**
@@ -70,7 +73,8 @@ class MaintenanceRecordController extends Controller
      */
     public function update(Request $request, MaintenanceRecord $maintenanceRecord)
     {
-        //
+        $maintenanceRecord->update(['alarm'=> !(is_null($request->alarm_check))] + $request->all());
+        return redirect(route('maintenance_record.index'));
     }
 
     /**
@@ -81,6 +85,8 @@ class MaintenanceRecordController extends Controller
      */
     public function destroy(MaintenanceRecord $maintenanceRecord)
     {
-        //
+        $maintenanceRecord->delete();
+        return redirect(route('maintenance_record.index'));
+
     }
 }

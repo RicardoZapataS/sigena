@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
             'name' => 'Ricardo',
             'last_name' => 'Zapata Subirana',
             'area_id' => '1',
-            'email' => 'ricardolciorz@gmail.com',
+            'email' => 'ricardolociorz@gmail.com',
             'password' => Hash::make('wasori2020'),
             'super_user' => '1',
         ]);

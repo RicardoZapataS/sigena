@@ -27,8 +27,10 @@ class AreasController extends Controller
      */
     public function create()
     {
+        //dd($routeCollection = \Illuminate\Support\Facades\Route::getRoutes());
+        $routes = \Illuminate\Support\Facades\Route::getRoutes();
         $users =  User::all();
-        return view('admin.area.create', compact('users'));
+        return view('admin.area.create', compact('users', 'routes'));
     }
 
     /**

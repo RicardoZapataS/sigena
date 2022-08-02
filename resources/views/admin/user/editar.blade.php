@@ -8,11 +8,11 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="date_event">Nombre <small>*Obligatorio</small> </label>
-                    <input value="{{ $data-> }}" required id="name" name="name" class="form-control" type="text">
+                    <input value="{{ $data->name }}" required id="name" name="name" class="form-control" type="text">
                 </div>
                 <div class="form-group">
                     <label for="date_event">Apellidos <small>*Obligatorio</small> </label>
-                    <input  value="{{ $data-> }}" required id="last_name" name="last_name" class="form-control" type="text">
+                    <input  value="{{ $data->last_name }}" required id="last_name" name="last_name" class="form-control" type="text">
                 </div>
                 <div class="form-group">
                     <label for="team">Area </label>
@@ -27,7 +27,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="date_event">Correo<small>*Obligatorio</small> </label>
-                    <input required value="{{ $data-> }}"  id="email" name="email" class="form-control" type="email">
+                    <input required value="{{ $data->email }}"  id="email" name="email" class="form-control" type="email">
                 </div>
                 <div class="form-group">
                     <label for="team">Administrador </label>

@@ -64,6 +64,7 @@
         <!-- Main content -->
         <section class="content">
             @yield('content')
+            @include('layouts.flash_message')
         </section>
         <!-- /.content -->
     </div>
@@ -88,6 +89,12 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/plugins/dist/js/adminlte.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script>
+    $(document).ready(function(){
+            $('.toast').toast('show');
+    });
+</script>
 @yield('js')
 </body>
 

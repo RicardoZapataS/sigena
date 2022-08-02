@@ -6,12 +6,20 @@
             @csrf
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="date_event">Nombre del area <small>*Obligatorio</small> </label>
+                    <label for="date_event">Alias de la ruta <small>*Obligatorio</small> </label>
                     <input required id="name" name="name" class="form-control" type="text">
                 </div>
                 <div class="form-group">
                     <label for="date_event">Nombre de la ruta <small>*Obligatorio</small> </label>
-                    <input required id="route_name" name="route_name" class="form-control" type="text">
+{{--                    <input required id="route_name" name="route_name" class="form-control" type="text">--}}
+
+                    <select required id="route_name" name="route_name" class="form-control selectpicker"  data-live-search="true">
+                        @foreach($routes as $route)
+                            @if($route->getName() != "")
+                            <option>{{ $route->getName()}}</option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="team">Modulo </label>
@@ -42,3 +50,15 @@
     </div>
     <!-- /.card-body -->
 @endsection
+
+
+@section('css')
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
+@endsection
+
+@section('js')
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ asset('assets/plugins/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
+@endsection
+

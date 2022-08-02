@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\RouteModule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class RouteModuleController extends Controller
 {
@@ -26,8 +27,15 @@ class RouteModuleController extends Controller
      */
     public function create()
     {
+
+
+        $routes = \Illuminate\Support\Facades\Route::getRoutes();
+
+//        foreach ($routeCollection as $value) {
+//            echo "<td>" . $value->getName() . "</td>";
+//        }
         $modules = RouteModule::whereNull('route_module_id')->get();
-        return view('admin.route_module.create', compact('modules'));
+        return view('admin.route_module.create', compact('modules', 'routes'));
     }
 
     /**

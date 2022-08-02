@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/', 'MainController@index')->name('index');
-
+    Route::name('config.')->group(function () {
+        Route::get('/usuario', 'Admin\UserController@showme')->name('index');
+        Route::put('/usuario', 'Admin\UserController@password')->name('update');
+    });
     Route::prefix('/admintrador')->group(function (){
         Route::name('area.')->group(function () {
             Route::get('/area', 'Admin\AreasController@index')->name('index');

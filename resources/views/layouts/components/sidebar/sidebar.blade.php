@@ -15,7 +15,7 @@
                      class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="{{ route('config.index') }}" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
         <div class=""

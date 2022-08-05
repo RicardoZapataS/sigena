@@ -11,6 +11,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/usuario', 'Admin\UserController@showme')->name('index');
         Route::put('/usuario', 'Admin\UserController@password')->name('update');
     });
+    Route::name('news_part.')->group(function () {
+        Route::get('/parte-de-novedades', 'NewsPartController@index')->name('index');
+        Route::get('/parte-de-novedades/crear', 'NewsPartController@create')->name('create');
+        Route::post('/parte-de-novedades', 'NewsPartController@store')->name('store');
+        Route::put('/parte-de-novedades', 'NewsPartController@update')->name('update');
+    });
     Route::prefix('/admintrador')->group(function (){
         Route::name('area.')->group(function () {
             Route::get('/area', 'Admin\AreasController@index')->name('index');

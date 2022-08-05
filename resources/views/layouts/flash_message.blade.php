@@ -17,7 +17,7 @@
 @endif
 
 @if ($message = Session::get('error'))
-    <div class="toast" role="alert" data-delay="5000" aria-live="assertive" aria-atomic="true"
+    <div class="toast" role="alert" data-delay="50000" aria-live="assertive" aria-atomic="true"
          style="position: absolute; top: 10px; left: 260px;" >
         <div class="toast-header">
             <img src="{{ asset('assets/img/logo_i_naabol.jpeg') }}" class="rounded mr-2" style="height: 40px;" alt="...">
@@ -39,7 +39,7 @@
             <img src="{{ asset('assets/img/logo_i_naabol.jpeg') }}" class="rounded mr-2" style="height: 40px;" alt="...">
             <strong class="mr-auto">SIGENA</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">&times</span>
             </button>
         </div>
         <div class="toast-body">

@@ -27,7 +27,7 @@
                 <input required id="passw" name="passw" class="form-control" type="password">
             </div>
             <div class="form-group col-md-6">
-                <label for="date_event">Contraseña <small></small> </label>
+                <label for="date_event">Repetir Contraseña <small></small> </label>
                 <input required id="passw_confirm" name="passw_confirm" class="form-control" type="password">
             </div>
             <div class="col-12">

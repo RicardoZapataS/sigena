@@ -38,6 +38,8 @@
                         </div>
                         <div class="form-group mt-3 pt-3 d-md-flex">
                             <div class="w-50">
+
+                                @include('layouts.flash_message')
                                 <style>
                                     .checkbox-wrap input:checked ~ .checkmark:after {
                                         color: #fbceb5;

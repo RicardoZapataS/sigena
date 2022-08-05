@@ -15,7 +15,7 @@ class NewsPartController extends Controller
      */
     public function index()
     {
-        $datas = NewsPart::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $datas = NewsPart::where('user_id', Auth::user()->id)->orderBy('date', 'desc')->get();
         return view('commons.news_part.index', compact('datas'));
     }
 
@@ -84,5 +84,19 @@ class NewsPartController extends Controller
     public function destroy(NewsPart $newsPart)
     {
         //
+    }
+    public function report(){
+return view('commons.news_part.report');
+    }
+    public function reportPrint( Request $request){
+        $from = date($request->dateinit);
+        $to = date($request->dateend);
+        $reports = NewsPart::where('user_id', Auth::user()->id)->whereBetween('date', [$from, $to])->orderBy('date', 'asc')->get();
+        $data = [
+            'reports' => $reports
+        ];
+
+        return \PDF::loadView('pdf.new_part', $data)
+            ->stream('informe-tecnico.pdf');
     }
 }

@@ -16,6 +16,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/parte-de-novedades/crear', 'NewsPartController@create')->name('create');
         Route::post('/parte-de-novedades', 'NewsPartController@store')->name('store');
         Route::put('/parte-de-novedades', 'NewsPartController@update')->name('update');
+        Route::get('/parte-de-novedades/reporte', 'NewsPartController@report')->name('report');
+        Route::post('/parte-de-novedades/reporte', 'NewsPartController@reportPrint')->name('report_print');
     });
     Route::prefix('/admintrador')->group(function (){
         Route::name('area.')->group(function () {

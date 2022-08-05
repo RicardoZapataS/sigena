@@ -23,12 +23,16 @@
                     <td>{{ $data->turn }}</td>
                     <td>{{ $data->performed_action }}</td>
                     <td style="display: flex; flex-direction: column; ;">
-                        <div  style="display: flex; flex-direction: revert; gap: 0.5rem;">
-                            <a href="{{ route('work_order.show', $data->id) }}" class="btn btn-primary " style="color: white"><i class="fas fa-eye"></i></a>
+                        <div style="display: flex; flex-direction: revert; gap: 0.5rem;">
+                            <a href="{{ route('work_order.show', $data->id) }}" class="btn btn-primary "
+                               style="color: white"><i class="fas fa-eye"></i></a>
                             @if(Auth::can_modify())
-                                <a href="{{ route('work_order.edit', $data->id) }}" class="btn btn-warning " style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
-                                <a onclick="event.preventDefault(); document.getElementById('delete-form-{{$data->id}}').submit();"  class="btn btn-danger " style="color: white"><i class="fas fa-trash"></i></a>
-                                <form action="{{ route('work_order.delete', $data->id) }}" id="delete-form-{{$data->id}}" method="POST" style="display: none">
+                                <a href="{{ route('work_order.edit', $data->id) }}" class="btn btn-warning "
+                                   style="color: #1F4661"><i class="fas fa-pen-square"></i></a>
+                                <a onclick="event.preventDefault(); document.getElementById('delete-form-{{$data->id}}').submit();"
+                                   class="btn btn-danger " style="color: white"><i class="fas fa-trash"></i></a>
+                                <form action="{{ route('work_order.delete', $data->id) }}"
+                                      id="delete-form-{{$data->id}}" method="POST" style="display: none">
                                     @csrf
                                     @method('DELETE')
                                 </form>

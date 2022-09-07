@@ -48,9 +48,10 @@ class WorkOrderTelecomController extends Controller
      * @param  \App\Models\WorkOrderTelecom  $workOrderTelecom
      * @return \Illuminate\Http\Response
      */
-    public function show(WorkOrderTelecom $workOrderTelecom)
+    public function show($workOrderTelecom)
     {
-        //
+        $data = WorkOrderTelecom::find($workOrderTelecom);
+        return view('telecom.work_order.show', compact('data'));
     }
 
     /**
@@ -59,9 +60,11 @@ class WorkOrderTelecomController extends Controller
      * @param  \App\Models\WorkOrderTelecom  $workOrderTelecom
      * @return \Illuminate\Http\Response
      */
-    public function edit(WorkOrderTelecom $workOrderTelecom)
+    public function edit($workOrderTelecom)
     {
-        //
+        //dd($workOrderTelecom);
+        $data = WorkOrderTelecom::find($workOrderTelecom);
+        return view('telecom.work_order.edit', compact('data'));
     }
 
     /**
@@ -71,9 +74,12 @@ class WorkOrderTelecomController extends Controller
      * @param  \App\Models\WorkOrderTelecom  $workOrderTelecom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WorkOrderTelecom $workOrderTelecom)
+    public function update(Request $request, $workOrderTelecom)
     {
-        //
+
+        $data = WorkOrderTelecom::find($workOrderTelecom);
+        $data->update($request->all());
+        return redirect(route('work_order_telecom.index'));
     }
 
     /**
@@ -82,8 +88,10 @@ class WorkOrderTelecomController extends Controller
      * @param  \App\Models\WorkOrderTelecom  $workOrderTelecom
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WorkOrderTelecom $workOrderTelecom)
+    public function destroy($workOrderTelecom)
     {
-        //
+        $data = WorkOrderTelecom::find($workOrderTelecom);
+        $data->delete();
+        return redirect(route('work_order_telecom.index'));
     }
 }

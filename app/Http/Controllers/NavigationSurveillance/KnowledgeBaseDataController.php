@@ -4,6 +4,7 @@ namespace App\Http\Controllers\NavigationSurveillance;
 
 use App\Http\Controllers\Controller;
 use App\Models\KnowledgeBaseData;
+use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -118,5 +119,34 @@ class KnowledgeBaseDataController extends Controller
     {
         $knowledgeBaseData->delete();
         return  redirect(route('knowledge_base.index'));
+    }
+    public function make()
+    {
+        return view('navigation_and_surveillance.knowledge_base.report');
+    }
+    public function print(Request $request)
+    {
+//        $from = date($request->dateinit);
+//        $to = date($request->dateinit);
+        $from = date($request->dateinit);
+        $to = date($request->dateend);
+//        $from = date('2022-07-13');
+//        $to = date('2022-07-13');
+        $reports = KnowledgeBaseData::whereBetween('date_event', [$from, $to])->orderBy('date_event', 'asc')->get();
+        $data = [
+            'reports' => $reports,
+            'di' => $from,
+            'de' => $to
+        ];
+//dd($data);
+        $pdf = \PDF::loadView('pdf.knowledge_base', $data);
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('base-de-conocimiento.pdf');
+
+//        $dompdf = new PDF();
+//        $dompdf->setPaper('a4', 'landscape');
+//        $dompdf->loadView('pdf.knowledge_base', $data);
+//        ;
+//        return $dompdf->stream('base-de-conocimiento.pdf');
     }
 }

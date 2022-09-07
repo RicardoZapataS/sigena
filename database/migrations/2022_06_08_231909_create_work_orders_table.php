@@ -19,8 +19,7 @@ class CreateWorkOrdersTable extends Migration
             $table->string('turn');
             $table->string('hour_start');
             $table->string('hour_end');
-            $table->string('taxiway16')->   nullable();
-            $table->string('taxiway34')->nullable();
+            $table->string('taxiway')->nullable();
             $table->string('threshold16')->nullable();
             $table->string('threshold34')->nullable();
             $table->string('als_approximation16')->nullable();

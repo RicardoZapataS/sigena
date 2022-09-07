@@ -70,6 +70,9 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['web', 'auth'])
             ->namespace('App\Http\Controllers\VisualAids')
             ->group(base_path('routes/web/visual_aids.php'));
+        Route::middleware(['web', 'auth'])
+            ->namespace('App\Http\Controllers\Atc')
+            ->group(base_path('routes/web/air_traffic_control.php'));
     }
 
     /**

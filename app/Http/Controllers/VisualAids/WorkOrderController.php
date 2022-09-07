@@ -121,4 +121,24 @@ class WorkOrderController extends Controller
         $workOrder->delete();
         return redirect(route('work_order.index'));
     }
+    public function make()
+    {
+        return view('visual_aids.worker_order.report');
+    }
+    public function print(Request $request)
+    {
+        $from = date($request->dateinit);
+        $to = date($request->dateinit);
+//        $from = date($request->dateinit);
+//        $to = date($request->dateend);
+//        $from = date('2022-07-13');
+//        $to = date('2022-07-13');
+        $reports = WorkOrder::whereBetween('date_work', [$from, $to])->orderBy('date_work', 'asc')->get();
+        $data = [
+            'data' => $reports
+        ];
+//dd($data);
+        return \PDF::loadView('pdf.work_order', $data)
+            ->stream('order-de-trabajo.pdf');
+    }
 }

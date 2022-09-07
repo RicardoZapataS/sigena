@@ -7,6 +7,8 @@ Route::prefix('/ayudas-luminosas')->group(function (){
         Route::get('/orden-de-trabajo', 'WorkOrderController@index')->name('index');
         Route::get('/orden-de-trabajo/crear', 'WorkOrderController@create')->name('create');
         Route::post('/orden-de-trabajo/store', 'WorkOrderController@store')->name('store');
+        Route::get('/orden-de-trabajo/reporte', 'WorkOrderController@make')->name('make_pdf');
+        Route::post('/orden-de-trabajo/reporte', 'WorkOrderController@print')->name('print_pdf');
         Route::get('/orden-de-trabajo/{workOrder}/editar', 'WorkOrderController@edit')->name('edit');
         Route::put('/orden-de-trabajo/{workOrder}/update', 'WorkOrderController@update')->name('update');
         Route::get('/orden-de-trabajo/{workOrder}', 'WorkOrderController@show')->name('show');

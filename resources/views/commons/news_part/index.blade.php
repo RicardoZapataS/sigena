@@ -19,7 +19,7 @@
                 <tr>
                     <td>{{ $key + 1 }}</td>
                     <td>PN-{{ $data->id }}</td>
-                    <td>{{ substr($data->report, 10)}}... </td>
+                    <td>{{ substr($data->report, 0, 20)}}... </td>
                     <td>{{ $data->user->name }}</td>
                     <td>{{ $data->date }}</td>
                     <td>{{ $data->turn }}</td>

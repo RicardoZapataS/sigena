@@ -145,7 +145,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="alarm_check">Alerta <small></small> </label>
-                <input required id="alarm_check" name="alarm_check" class="form-control" type="checkbox">
+                <input  id="alarm_check" name="alarm_check" class="form-control" type="checkbox">
             </div>
             <input type="hidden" value="{{ Auth::user()->id }}" name="user_id">
             <div class="col-12">

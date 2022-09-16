@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="date_maintenance">Fecha <small>*Obligatorio</small> </label>
-                <input value="{{ $maintenanceRecord->date_maintenance }}" required id="date_maintenance" name="date_maintenance" class="form-control" type="datetime-local">
+                <input value="{{ $maintenanceRecord->date_maintenance }}" required id="date_maintenance" name="date_maintenance" class="form-control" type="date">
             </div>
             <div class="form-group col-md-6">
                 <label for="activity_name">Nombre de actividad<small>*Obligatorio</small> </label>

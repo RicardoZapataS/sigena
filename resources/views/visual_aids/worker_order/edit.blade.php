@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="date_event">Fecha <small>*Obligatorio</small> </label>
-                <input required id="date_work" name="date_work" class="form-control" type="datetime-local">
+                <input required value="{{ $data->date_work }}" id="date_work" name="date_work" class="form-control" type="date">
             </div>
             <div class="form-group col-md-6">
                 <label for="notam">Hora inspeccion</label>
@@ -27,13 +27,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Inicio</span>
                         </div>
-                        <input value=" {{ $data->hour_start }}" id="hour_start" name="hour_start"  type="time" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input value="{{ $data->hour_start }}" id="hour_start" name="hour_start"  type="time" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                     <div class="input-group  col-md-6">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">Fin </span>
                         </div>
-                        <input value=" {{ $data->hour_end }}"  id="hour_end" name="hour_end"  type="time" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+                        <input value="{{ $data->hour_end }}"  id="hour_end" name="hour_end"  type="time" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
             </div>

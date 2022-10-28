@@ -19,6 +19,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/parte-de-novedades/reporte', 'NewsPartController@report')->name('report');
         Route::post('/parte-de-novedades/reporte', 'NewsPartController@reportPrint')->name('report_print');
     });
+    Route::name('lost_thing.')->group(function () {
+        Route::get('/objetos-perdidos', 'LostThingController@index')->name('index');
+        Route::get('/objetos-perdidos/crear', 'LostThingController@create')->name('create');
+        Route::post('/objetos-perdidos', 'LostThingController@store')->name('store');
+        Route::get('/objetos-perdidos/{lost_thing}/editar', 'LostThingController@edit')->name('edit');
+        Route::get('/objetos-perdidos/{lost_thing}', 'LostThingController@show')->name('show');
+        Route::put('/objetos-perdidos', 'LostThingController@update')->name('update');
+        Route::delete('/objetos-perdidos/{lost_thing}', 'LostThingController@destroy')->name('delete');
+
+    });
     Route::prefix('/admintrador')->group(function (){
         Route::name('area.')->group(function () {
             Route::get('/area', 'Admin\AreasController@index')->name('index');

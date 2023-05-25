@@ -31,9 +31,6 @@ class RouteModuleController extends Controller
 
         $routes = \Illuminate\Support\Facades\Route::getRoutes();
 
-//        foreach ($routeCollection as $value) {
-//            echo "<td>" . $value->getName() . "</td>";
-//        }
         $modules = RouteModule::whereNull('route_module_id')->get();
         return view('admin.route_module.create', compact('modules', 'routes'));
     }
